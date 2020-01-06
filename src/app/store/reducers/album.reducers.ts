@@ -1,4 +1,3 @@
-import {Album} from '../../shared/models/album';
 import {EAlbumActions, AlbumActions} from '../actions/album.actions';
 import {initialAlbumState} from '../state/album.state';
 
