@@ -21,7 +21,7 @@ export class AlbumService {
     }
 
     public getPhotos(albumId: number): Observable<Photo[]> {
-        return this.httpClient.get(`https://jsonplaceholder.typicode.com/photos?albumId=%${albumId}`)
+        return this.httpClient.get(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
             .pipe(map((res: Photo[]) => res));
     }
 }

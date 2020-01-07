@@ -16,6 +16,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { RouterEffects } from './store/effects/router.effects';
 import { CustomSerializer } from './shared/models/custom-serializer';
+import { PhotoEffects } from './store/effects/photo.effects';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,7 @@ import { CustomSerializer } from './shared/models/custom-serializer';
         HttpClientModule,
         AppRoutingModule,
         StoreModule.forRoot({ ...appReducers, router: routerReducer }),
-        EffectsModule.forRoot([AlbumEffects, RouterEffects]),
+        EffectsModule.forRoot([AlbumEffects, RouterEffects, PhotoEffects]),
         StoreRouterConnectingModule.forRoot({
             serializer: CustomSerializer
         }),

@@ -10,7 +10,7 @@ const routes: Routes = [
         component: AlbumsComponent
     },
     {
-        path: 'album/:id',
+        path: 'album/:albumId',
         component: PhotosComponent
     }
 ];

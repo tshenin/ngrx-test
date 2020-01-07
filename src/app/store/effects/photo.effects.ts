@@ -18,10 +18,7 @@ export class PhotoEffects {
     @Effect()
     public getPhotos$ = this.actions$.pipe(
         ofType<GetPhotos>(EPhotoActions.GET_PHOTOS),
-        switchMap((res) => {
-            console.log(res);
-            return this.albumService.getPhotos(1);
-        }),
+        switchMap((action) => this.albumService.getPhotos(action.payload)),
         switchMap((photos: Photo[]) => of(new GetPhotosSuccess(photos)))
     );
 }
