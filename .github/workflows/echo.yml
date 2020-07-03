@@ -6,7 +6,8 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    tags: ["release/eu-v**"]
+    # Match all semantic verion like v1.10.2-eu
+    tags: ["v[0-9]+.[0-9]+.[0-9]+-eu"]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
