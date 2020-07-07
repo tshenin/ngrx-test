@@ -25,6 +25,7 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
+      if: endsWith(github.event.release.tag_name, "-eu")
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
