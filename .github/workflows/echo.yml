@@ -25,4 +25,6 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: echo {{ toJson(github) }}
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
