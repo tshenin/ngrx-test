@@ -1,5 +1,5 @@
-import {IAlbumState, initialAlbumState} from './state/album.state';
-import {initialPhotoState, IPhotoState} from './state/photo.state';
+import { IAlbumState, initialAlbumState } from './state/album.state';
+import { initialPhotoState, IPhotoState } from './state/photo.state';
 
 export interface IAppState {
     albums: IAlbumState;
