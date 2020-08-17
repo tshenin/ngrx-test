@@ -1,7 +1,7 @@
 name: Sync multiple branches
 on:
   push:
-    branches: [master]
+    branches: [test]
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
