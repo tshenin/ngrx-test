@@ -1,4 +1,4 @@
-name: Sync multiple branches
+name: Sync Master and Test branches
 on:
   push:
     branches: [test]
