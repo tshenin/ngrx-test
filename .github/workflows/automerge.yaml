@@ -1,17 +1,16 @@
-name: Sync Master and Test branches
+name: Automerge release to develop
 on:
-  push:
-    branches: [test]
+    push:
+        branches: ["release/v[0-9]+.[0-9]+.[0-9]+"]
 jobs:
-  sync-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
+    sync-branch:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
 
-      - name: Merge test -> master
-        uses: devmasx/merge-branch@v1.3.0
-        with:
-          type: now
-          head_to_merge: test
-          target_branch: master
-          github_token: ${{ github.token }}
+            - name: Merge master -> develop
+              uses: devmasx/merge-branch@v1.3.0
+              with:
+                  type: now
+                  target_branch: master
+                  github_token: ${{ github.token }}
