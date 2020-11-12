@@ -8,8 +8,9 @@ jobs:
         steps:
             - uses: actions/checkout@master
 
-            - name: Create Pull Request
-              uses: peter-evans/create-pull-request@v3
-              with:
-                base: master
-                title: "[Automatic PR] Merge test to master"
+            - name: pull-request-action
+              uses: vsoch/pull-request-action@1.0.6
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                BRANCH_PREFIX: "test"
+                PULL_REQUEST_BRANCH: "master"
