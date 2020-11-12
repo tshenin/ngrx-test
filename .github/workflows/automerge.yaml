@@ -1,17 +1,15 @@
-name: Sync Master and Test branches
+name: Auto pull request
 on:
-  push:
-    branches: [test]
+    push:
+        branches: ["test"]
 jobs:
-  sync-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
+    sync-branch:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
 
-      - name: Merge test -> master
-        uses: devmasx/merge-branch@v1.3.0
-        with:
-          type: now
-          head_to_merge: test
-          target_branch: master
-          github_token: ${{ github.token }}
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v3
+              with:
+                base: master
+                title: "[Automatic PR] Merge test to master"
