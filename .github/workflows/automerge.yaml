@@ -1,15 +1,22 @@
 name: Auto pull request
 on:
-    push:
-        branches: ["test"]
+    workflow_dispatch:
+        inputs:
+            version:
+                description: 'Version'
+                required: true
+                default: ''
+            exclude:
+                description: 'Exclude cluster'
+                required: false
+                default: ''        
 jobs:
     sync-branch:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@master
 
-            - name: Create Pull Request
-              uses: peter-evans/create-pull-request@v3
-              with:
-                base: master
-                title: "[Automatic PR] Merge test to master"
+            - name: Echo inputs
+              run: |
+                echo {{github.event.inputs.version}}
+                echo {{github.event.inputs.exclude}}
