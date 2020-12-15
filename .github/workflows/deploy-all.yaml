@@ -9,7 +9,11 @@ on:
             exclude:
                 description: 'Exclude cluster'
                 required: false
-                default: ''        
+                default: ''
+            only-for:
+                description: 'Only for'
+                required: false
+                default: ''
 jobs:
     run-deploy:
         runs-on: ubuntu-latest
