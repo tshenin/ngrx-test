@@ -10,6 +10,10 @@ on:
                 description: 'Exclude cluster'
                 required: false
                 default: ''
+            only-for:
+                description: 'Only for'
+                required: false
+                default: ''
 jobs:
     run-deploy:
         runs-on: ubuntu-latest
@@ -17,12 +21,22 @@ jobs:
             - uses: actions/checkout@master
               
             - name: Fake deploy us-1
-              if: contains(github.event.inputs.exclude, 'us-1') == false
+              if: |
+                (github.event.inputs.only-for != '' && contains(github.event.inputs.only-for, 'us-1')) ||
+                (github.event.inputs.only-for == '' && contains(github.event.inputs.exclude, 'us-2') == false)
               run: echo ${{ github.event.inputs.version }}-us-1 Deployed
               
             - name: Fake deploy us-2
-              if: contains(github.event.inputs.exclude, 'us-2') == false
+              if: |
+                (github.event.inputs.only-for != '' && contains(github.event.inputs.only-for, 'us-2')) ||
+                (github.event.inputs.only-for == '' && contains(github.event.inputs.exclude, 'us-2') == false)
               run: echo ${{ github.event.inputs.version }}-us-2 Deployed
+              
+            - name: Fake deploy us-3
+              if: |
+                (github.event.inputs.only-for != '' && contains(github.event.inputs.only-for, 'us-3')) ||
+                (github.event.inputs.only-for == '' && contains(github.event.inputs.exclude, 'us-3') == false)
+              run: echo ${{ github.event.inputs.version }}-us-3 Deployed
 
             - name: Create Release
               uses: actions/create-release@v1
@@ -32,6 +46,7 @@ jobs:
                 tag_name: ${{ github.event.inputs.version }}-us
                 release_name: ${{ github.event.inputs.version }}-us
                 body: |
+                    Only For Clusters: ${{ github.event.inputs.only-for }}
                     Excluded clusters: ${{ github.event.inputs.exclude }}
                 draft: false
                 prerelease: false
