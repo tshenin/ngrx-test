@@ -19,3 +19,9 @@ jobs:
               run: |
                 echo ${{ github.event.inputs.version }}
                 echo ${{ github.event.inputs.exclude }}
+            - name: Invoke workflow with inputs
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                workflow: Deploy us
+                token: ${{ secrets.TOKEN }}
+                inputs: '{ "version": "${{ github.event.inputs.version }}", "exclude": "${{ github.event.inputs.exclude }}" }'
