@@ -15,7 +15,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@master
-            - name: Echo inputs
-              run: |
-                echo ${{ github.event.inputs.version }}-us
-                echo ${{ github.event.inputs.exclude }}
+              
+            - name: Fake deploy us-1
+              if: contains(github.event.inputs.exclude, 'us-1')
+              run: echo ${{ github.event.inputs.version }}-us-1 Deployed
+              
+            - name: Fake deploy us-2
+              if: contains(github.event.inputs.exclude, 'us-2')
+              run: echo ${{ github.event.inputs.version }}-us-2 Deployed
