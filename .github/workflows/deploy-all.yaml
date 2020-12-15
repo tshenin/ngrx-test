@@ -22,6 +22,6 @@ jobs:
             - name: Invoke workflow with inputs
               uses: benc-uk/workflow-dispatch@v1
               with:
-                workflow: Deploy us cluster
+                workflow: Deploy us clusters
                 token: ${{ secrets.TOKEN }}
                 inputs: '{ "version": "${{ github.event.inputs.version }}", "exclude": "${{ github.event.inputs.exclude }}" }'
