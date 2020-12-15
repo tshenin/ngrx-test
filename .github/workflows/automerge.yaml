@@ -1,4 +1,4 @@
-name: Auto pull request
+name: Deploy all clusters
 on:
     workflow_dispatch:
         inputs:
