@@ -15,8 +15,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@master
-
             - name: Echo inputs
               run: |
-                echo ${{github.event.inputs.version}}
-                echo ${{github.event.inputs.exclude}}
+                echo ${{ github.event.inputs.version }}
+                echo ${{ github.event.inputs.exclude }}
