@@ -23,3 +23,15 @@ jobs:
             - name: Fake deploy us-2
               if: contains(github.event.inputs.exclude, 'us-2') == false
               run: echo ${{ github.event.inputs.version }}-us-2 Deployed
+
+            - name: Create Release
+              uses: actions/create-release@v1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                tag_name: ${{ github.event.inputs.version }}-us
+                release_name: ${{ github.event.inputs.version }}-us
+                body: |
+                    Excluded clusters: ${{ github.event.inputs.exclude }}
+                draft: false
+                prerelease: false
