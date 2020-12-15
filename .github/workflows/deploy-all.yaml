@@ -29,8 +29,8 @@ jobs:
                 workflow: Deploy us clusters
                 token: ${{ secrets.TOKEN }}
                 inputs: |
-                    '{
+                    {
                         "version": "${{ github.event.inputs.version }}",
                         "exclude": "${{ github.event.inputs.exclude }}",
                         "only-for": "${{ github.event.inputs.only-for }}"
-                    }'
+                    }
