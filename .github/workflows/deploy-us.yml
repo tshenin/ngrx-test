@@ -21,9 +21,7 @@ jobs:
             - uses: actions/checkout@master
               
             - name: Fake deploy us-1
-              if: |
-                (github.event.inputs.only-for != '' && contains(github.event.inputs.only-for, 'us-1')) ||
-                (github.event.inputs.only-for == '' && contains(github.event.inputs.exclude, 'us-2') == false)
+              if: github.event.inputs.only-for == 'us-1'
               run: echo ${{ github.event.inputs.version }}-us-1 Deployed
               
             - name: Fake deploy us-2
