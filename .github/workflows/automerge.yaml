@@ -16,4 +16,4 @@ jobs:
                 gh auth login
                 gh pr create -H test -B master
               env:
-                GH_TOKEN: {{ secrets.TOKEN }}
+                GH_TOKEN: ${{ secrets.TOKEN }}
