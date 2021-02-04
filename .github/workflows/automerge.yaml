@@ -13,4 +13,5 @@ jobs:
             
             - name: Echo gh cli version
               run: |
+                gh auth login --with-token {{ secrets.TOKEN }}
                 gh pr create -H test -B master
