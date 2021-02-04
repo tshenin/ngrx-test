@@ -13,6 +13,6 @@ jobs:
             
             - name: Echo gh cli version
               run: |
-                gh pr create -H test -B master --title "Automatic merge test to master"
+                gh pr create -H test -B master --fill
               env:
                 GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
