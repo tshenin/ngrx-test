@@ -13,5 +13,6 @@ jobs:
             
             - name: Echo gh cli version
               run: |
-                GITHUB_TOKEN=${{ secrets.TOKEN }} gh auth login
                 gh pr create -H test -B master
+              env:
+                GITHUB_TOKEN=${{ secrets.TOKEN }}
