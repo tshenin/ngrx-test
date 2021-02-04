@@ -6,10 +6,12 @@ on:
                 description: 'Version'
                 default: ''
 jobs:
-    run-deploy:
+    automerge:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@master
             
             - name: Echo gh cli version
-              run: gh --version
+              run: |
+                git checkout test
+                gh pr create 
