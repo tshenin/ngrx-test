@@ -13,5 +13,4 @@ jobs:
             
             - name: Echo gh cli version
               run: |
-                git checkout test
-                gh pr create 
+                gh pr create -H test -B master
