@@ -13,6 +13,6 @@ jobs:
             
             - name: Echo gh cli version
               run: |
-                gh pr create -H develop -B master --fill
+                gh pr create -H develop -B master --title="Automatic merge develop to master" --body="Test body"
               env:
                 GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
